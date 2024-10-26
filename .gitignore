@@ -1,0 +1,23 @@
+# Node modules (if you're using Tailwind via npm)
+node_modules/
+
+# Tailwind config file output (if using JIT mode or custom builds)
+public/css/output.css
+public/css/output.min.css
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# OS-specific files (macOS and Windows)
+.DS_Store
+Thumbs.db
+
+# Optional: Cache files
+.cache/
