@@ -7,7 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- <link rel="stylesheet" href="src/output.css"> -->
 </head>
-<body class="bg-[url('C:/Users/Admin/Documents/Prototype/images/Background/bg-image.jpg')] bg-cover bg-center h-screen">
+<body class="justify-center h-[calc(100vh-64px)] bg-center h-screen bg-no-repeat w-full md:bg-contain lg:bg-cover" style="background-image: url('/Chrochet-Kits-Prototype/images/Background/bg-image.jpg');">
     
     <nav class="max-w-10xl mx-auto py-4 px-6 flex items-center justify-between bg-slate-950">
         <div class="logo">
@@ -39,40 +39,38 @@
     </nav>
 
     <div id="home" class="page block ">
-        <h1 class="py-5 mx-auto relative h-5 w-15">Home Page</h1>
-
+        <h1 class="flex items-center text-white justify-center py-5 mx-auto relative h-5 w-15">Home Page</h1>
     </div>
 
     <div id="about" class="page hidden ">
-        <h1 class="py-5 mx-auto relative h-5 w-15">About Page</h1>
+        <h1 class="text-white py-5 mx-auto relative h-5 w-15">About Page</h1>
     </div>
 
     <div id="my-account" class="page hidden ">
-        <h1 class="py-5 mx-auto relative h-5 w-15">my account page</h1>
+        <h1 class="text-white py-5 mx-auto relative h-5 w-15">my account page</h1>
     </div>
 
     <div id="cart" class="page hidden ">
-        <h1 class="py-5 mx-auto relative h-5 w-15">cart page</h1>
+        <h1 class="text-white py-5 mx-auto relative h-5 w-15">cart page</h1>
     </div>
 
     <div id="products" class="page hidden ">
-        <h1 class="py-5 mx-auto relative h-5 w-15">Products Here</h1>
+        <h1 class="text-white py-5 mx-auto relative h-5 w-15">Products Here</h1>
     </div>
 
 
+    <script>
+        function showPage(pageId) {
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.classList.add('hidden'));
     
+            const selectedPage = document.getElementById(pageId);
+            selectedPage.classList.remove('hidden');
+        }
+    </script>
 
 
 </body>
 </html>
 
 
-<script>
-    function showPage(pageId) {
-        const pages = document.querySelectorAll('.page');
-        pages.forEach(page => page.classList.add('hidden'));
-
-        const selectedPage = document.getElementById(pageId);
-        selectedPage.classList.remove('hidden');
-    }
-</script>
