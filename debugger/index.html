@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Multiple Pages in One File</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    /* Fade-in animation */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .modal-open {
+      animation: fadeIn 0.3s ease-in-out;
+    }
+
+    /* Styles for full-screen zoom */
+    .zoomed-image {
+      max-width: calc(50% - 40px); /* Leave space on sides */
+      max-height: calc(50% - 40px); /* Leave space on top and bottom */
+      margin: 20px; /* Small space around the image */
+      object-fit: contain; /* Maintain aspect ratio */
+    }
+
+
+  </style>
+</head>
+<body class="bg-black p-6">
+
+  <div class="flex flex-wrap justify-center p-3 gap-4">
+
+    <div class="flex flex-col items-center justify-center max-w-xs bg-white rounded-lg shadow-md overflow-hidden mb-4">
+      <div onclick="openModal()" class="cursor-pointer">
+        <img src="/images/Material-Based Crochet Hooks/Aluminum Hook 2.jpg" alt="Product Image" class="w-full h-70 object-cover">
+      </div>
+      <div class="p-4">
+        <h2 class="text-lg font-bold text-gray-800">Product Title 1</h2>
+        <p class="text-sm text-gray-600 mt-2">A brief description of the product.</p>
+        <button class="mt-4 bg-blue-500 text-white px-4 py-2 rounded-lg transition-colors hover:bg-blue-600">
+          Buy Now
+        </button>
+      </div>
+    </div>
+
+    <div class="flex flex-col items-center justify-center max-w-xs bg-white rounded-lg shadow-md overflow-hidden mb-4">
+      <div onclick="openModal()" class="cursor-pointer">
+        <img src="/images/Material-Based Crochet Hooks/Aluminum Hook 2.jpg" alt="Product Image" class="w-full h-70 object-cover">
+      </div>
+      <div class="p-4">
+        <h2 class="text-lg font-bold text-gray-800">Product Title 2</h2>
+        <p class="text-sm text-gray-600 mt-2">A brief description of the product.</p>
+        <button class="mt-4 bg-blue-500 text-white px-4 py-2 rounded-lg transition-colors hover:bg-blue-600">
+          Buy Now
+        </button>
+      </div>
+    </div>
+  
+
+    <div class="flex flex-col items-center justify-center max-w-xs bg-white rounded-lg shadow-md overflow-hidden mb-4">
+      <div onclick="openModal()" class="cursor-pointer">
+        <img src="/images/Material-Based Crochet Hooks/Aluminum Hook 2.jpg" alt="Product Image" class="w-full h-70 object-cover">
+      </div>
+      <div class="p-4">
+        <h2 class="text-lg font-bold text-gray-800">Product Title 3</h2>
+        <p class="text-sm text-gray-600 mt-2">A brief description of the product.</p>
+        <button class="mt-4 bg-blue-500 text-white px-4 py-2 rounded-lg transition-colors hover:bg-blue-600">
+          Buy Now
+        </button>
+      </div>
+    </div>
+
+  <div class="flex flex-col items-center justify-center max-w-xs bg-white rounded-lg shadow-md overflow-hidden mb-4">
+    <div onclick="openModal()" class="cursor-pointer">
+      <img src="/images/Material-Based Crochet Hooks/Aluminum Hook 2.jpg" alt="Product Image" class="w-full h-70 object-cover">
+    </div>
+    <div class="p-4">
+      <h2 class="text-lg font-bold text-gray-800">Product Title 3</h2>
+      <p class="text-sm text-gray-600 mt-2">A brief description of the product.</p>
+      <button class="mt-4 bg-blue-500 text-white px-4 py-2 rounded-lg transition-colors hover:bg-blue-600">
+        Buy Now
+      </button>
+    </div>
+  </div>
+</div>
+
+
+  
+
+  <!-- Modal Background -->
+  <div id="modal" class="fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center hidden">
+    <!-- Modal Content -->
+    <div class="bg-white rounded-lg overflow-hidden w-full h-full p-4 flex items-center justify-center modal-open">
+      <div class="flex justify-end">
+        <button onclick="closeModal()" class="text-gray-500 hover:text-gray-800">&times;</button>
+      </div>
+      <h3 class="text-xl font-semibold text-center mb-4">Related Images</h3>
+      <!-- Zoomed Image Display -->
+      <div class="mb-4">
+        <img id="zoomed-image" src="" alt="Zoomed Image" class="zoomed-image hidden">
+      </div>
+      <!-- Thumbnail Images -->
+      <div class="grid grid-cols-3 gap-2">
+        <img src="/images/Material-Based Crochet Hooks/Aluminum Hook 2.jpg" alt="Related Image 1" class="thumbnail w-full h-32 object-cover rounded-lg cursor-pointer" onclick="zoomImage(this.src)">
+        <img src="/images/Material-Based Crochet Hooks/Aluminum Hook all.jpg" alt="Related Image 2" class="thumbnail w-full h-32 object-cover rounded-lg cursor-pointer" onclick="zoomImage(this.src)">
+        <img src="/images/Material-Based Crochet Hooks/Aluminum Hook.jpg" alt="Related Image 3" class="thumbnail w-full h-32 object-cover rounded-lg cursor-pointer" onclick="zoomImage(this.src)">
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+  
+  <script>
+    // Function to open modal
+    function openModal() {
+      document.getElementById('modal').classList.remove('hidden');
+    }
+
+    // Function to close modal
+    function closeModal() {
+      document.getElementById('modal').classList.add('hidden');
+    }
+
+    // Function to zoom image
+    function zoomImage(src) {
+      const zoomedImage = document.getElementById('zoomed-image');
+      zoomedImage.src = src;
+      zoomedImage.classList.remove('hidden'); // Show the zoomed image
+    }
+  </script>
+</body>
+</html>
