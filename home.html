@@ -17,15 +17,62 @@
                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
             </svg>
         </button>
-        
+    
         <div id="dropdownHover" class="absolute hidden z-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
             <ul class="py-2 text-sm text-black-100">
-                <li><a href="#" class="block px-4 py-2 hover:bg-gray-400">Material-Based</a></li>
-                <li><a href="#" class="block px-4 py-2 hover:bg-gray-400">Style-Based</a></li>
-                <li><a href="#" class="block px-4 py-2 hover:bg-gray-400">Handle</a></li>
+                <li>
+                    <button id="materialDropdownButton" class="flex justify-between w-full px-4 py-2 hover:bg-gray-400">
+                        Material-Based
+                        <svg class="w-2.5 h-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                        </svg>
+                    </button>
+                    <div id="materialDropdown" class="hidden absolute left-full top-0 mt-1 z-20 bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
+                        <ul class="py-2 text-sm text-black-100">
+                            <li><a href="#" class="block px-4 py-2 hover:bg-gray-400">Aluminum Hook</a></li>
+                            <li><a href="#" class="block px-4 py-2 hover:bg-gray-400">Plastic Hooks</a></li>
+                            <li><a href="#" class="block px-4 py-2 hover:bg-gray-400">Steel Hooks</a></li>
+                            <li><a href="#" class="block px-4 py-2 hover:bg-gray-400">Wooden Hooks</a></li>
+                            <li><a href="#" class="block px-4 py-2 hover:bg-gray-400">Acrylic Hooks</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <button id="handleDropdownButton" class="flex justify-between w-full px-4 py-2 hover:bg-gray-400">
+                        Handle Types
+                        <svg class="w-2.5 h-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                        </svg>
+                    </button>
+                    <div id="handleDropdown" class="hidden absolute left-full top-0 mt-1 z-20 bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
+                        <ul class="py-2 text-sm text-black-100">
+                            <li><a href="#" class="block px-4 py-2 hover:bg-gray-400">Ergonomic Hook</a></li>
+                            <li><a href="#" class="block px-4 py-2 hover:bg-gray-400">Lighted Hooks</a></li>
+                            <li><a href="#" class="block px-4 py-2 hover:bg-gray-400">Interchangeable Hooks</a></li>
+                            <li><a href="#" class="block px-4 py-2 hover:bg-gray-400">Double-Ended Hooks</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <button id="styleDropdownButton" class="flex justify-between w-full px-4 py-2 hover:bg-gray-400">
+                        Style-Based
+                        <svg class="w-2.5 h-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                        </svg>
+                    </button>
+                    <div id="styleDropdown" class="hidden absolute left-full top-0 mt-1 z-20 bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
+                        <ul class="py-2 text-sm text-black-100">
+                            <li><a href="#" class="block px-4 py-2 hover:bg-gray-400">Casual Style</a></li>
+                            <li><a href="#" class="block px-4 py-2 hover:bg-gray-400">Elegant Style</a></li>
+                            <li><a href="#" class="block px-4 py-2 hover:bg-gray-400">Modern Style</a></li>
+                            <li><a href="#" class="block px-4 py-2 hover:bg-gray-400">Vintage Style</a></li>
+                        </ul>
+                    </div>
+                </li>
             </ul>
         </div>
     </div>
+    
 
     <div class="logo">
         <a href="home.html" class="text-2xl text-white">Crochet Kits</a>
@@ -97,13 +144,6 @@
         dropdownMenu.classList.add('hidden');
     });
 
-
-
-    dropdownButton.addEventListener('mouseenter', () => {
-    dropdownMenu.classList.remove('hidden');
-});
-
-
     dropdownMenu.addEventListener('mouseenter', () => {
         dropdownMenu.classList.remove('hidden');
     });
@@ -112,15 +152,99 @@
         dropdownMenu.classList.add('hidden');
     });
 
-
     // Close dropdown if clicking outside
     document.addEventListener('click', (event) => {
         if (!dropdownButton.contains(event.target) && !dropdownMenu.contains(event.target)) {
             dropdownMenu.classList.add('hidden');
         }
     });
-</script>
+
+    const materialDropdownButton = document.getElementById('materialDropdownButton');
+    const materialDropdown = document.getElementById('materialDropdown');
+    const handleDropdownButton = document.getElementById('handleDropdownButton');
+    const handleDropdown = document.getElementById('handleDropdown');
+    const styleDropdownButton = document.getElementById('styleDropdownButton');
+    const styleDropdown = document.getElementById('styleDropdown');
+    
+    // Function to hide all dropdowns
+    function hideAllDropdowns() {
+        if (materialDropdown) materialDropdown.classList.add('hidden');
+        if (handleDropdown) handleDropdown.classList.add('hidden');
+        if (styleDropdown) styleDropdown.classList.add('hidden');
+    }
+    
+    // Ensure the elements exist before adding event listeners
+    if (materialDropdownButton && materialDropdown) {
+        materialDropdownButton.addEventListener('click', (event) => {
+            event.stopPropagation();
+            hideAllDropdowns();
+            materialDropdown.classList.toggle('hidden');
+        });
+    
+        materialDropdownButton.addEventListener('mouseenter', () => {
+            hideAllDropdowns();
+            materialDropdown.classList.remove('hidden');
+        });
+    
+        materialDropdown.addEventListener('mouseenter', () => {
+            materialDropdown.classList.remove('hidden');
+        });
+    
+        materialDropdown.addEventListener('mouseleave', () => {
+            materialDropdown.classList.add('hidden');
+        });
+    }
+    
+    if (handleDropdownButton && handleDropdown) {
+        handleDropdownButton.addEventListener('click', (event) => {
+            event.stopPropagation();
+            hideAllDropdowns();
+            handleDropdown.classList.toggle('hidden');
+        });
+    
+        handleDropdownButton.addEventListener('mouseenter', () => {
+            hideAllDropdowns();
+            handleDropdown.classList.remove('hidden');
+        });
+    
+        handleDropdown.addEventListener('mouseenter', () => {
+            handleDropdown.classList.remove('hidden');
+        });
+    
+        handleDropdown.addEventListener('mouseleave', () => {
+            handleDropdown.classList.add('hidden');
+        });
+    }
+    
+    if (styleDropdownButton && styleDropdown) {
+        styleDropdownButton.addEventListener('click', (event) => {
+            event.stopPropagation();
+            hideAllDropdowns();
+            styleDropdown.classList.toggle('hidden');
+        });
+    
+        styleDropdownButton.addEventListener('mouseenter', () => {
+            hideAllDropdowns();
+            styleDropdown.classList.remove('hidden');
+        });
+    
+        styleDropdown.addEventListener('mouseenter', () => {
+            styleDropdown.classList.remove('hidden');
+        });
+    
+        styleDropdown.addEventListener('mouseleave', () => {
+            styleDropdown.classList.add('hidden');
+        });
+    }
+    
+    // Close dropdowns if clicking outside
+    document.addEventListener('click', (event) => {
+        if (!event.target.closest('#dropdownHoverButton')) {
+            hideAllDropdowns();
+        }
+    });
+    </script>
+
 
 </body>
 </html>
-
